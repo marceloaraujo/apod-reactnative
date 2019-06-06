@@ -27,7 +27,7 @@ export default class Main extends Component {
 
     renderItem = ({ item }) => {
         return(
-            <Post picture={item} />
+            <Post picture={item} navigation={this.props.navigation}/>
         );
     }
 

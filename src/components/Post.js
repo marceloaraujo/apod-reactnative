@@ -7,7 +7,8 @@ export default class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            picture: this.props.picture
+            picture: this.props.picture,
+            navigation: this.props.navigation
         }
     }
 
@@ -72,10 +73,12 @@ export default class Post extends Component {
                         </Text>
                     </View>
                 </View>
-                <Image
-                    style={styles.imageFeed}
-                    source={{ uri: picture.url }}
-                />
+                <TouchableOpacity onPress={() => this.goToDetails()}>
+                    <Image
+                        style={styles.imageFeed}
+                        source={{ uri: picture.url }}
+                    />
+                </TouchableOpacity>
                 {textExplanation}
             </View>
         );
@@ -95,6 +98,11 @@ export default class Post extends Component {
                 menos
             </Text>
         );
+    }
+
+    goToDetails = () => {
+        // this.props.navigation.navigate('Details');
+        this.state.navigation.navigate('Details');
     }
 
 }
