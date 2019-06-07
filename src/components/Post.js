@@ -102,7 +102,9 @@ export default class Post extends Component {
 
     goToDetails = () => {
         // this.props.navigation.navigate('Details');
-        this.state.navigation.navigate('Details');
+        if(this.state.navigation) {
+            this.state.navigation.navigate('Details', {picture: this.state.picture});
+        }
     }
 
 }
