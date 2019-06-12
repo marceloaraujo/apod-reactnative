@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'; 
+import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native'; 
+import { Image, Avatar } from 'react-native-elements';
 import ViewMoreText from 'react-native-view-more-text';
 
 export default class Post extends Component {
@@ -61,9 +62,11 @@ export default class Post extends Component {
          */
         let dateArr = picture.date.split("-");
         let date = dateArr[2] + "/" + dateArr[1] + "/" + dateArr[0];
+
         return(
             <View>
                 <View style={styles.viewContainerItem}>
+                    <Avatar rounded source={require('../images/space.png')} />
                     <View style={styles.viewProfile}>
                         <Text style={styles.textTitle}>
                             {picture.title}
@@ -77,6 +80,7 @@ export default class Post extends Component {
                     <Image
                         style={styles.imageFeed}
                         source={{ uri: picture.url }}
+                        PlaceholderContent={<ActivityIndicator />}
                     />
                 </TouchableOpacity>
                 {textExplanation}
@@ -118,6 +122,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     viewProfile: {
+        marginLeft: 8
     },
     textTitle: {
         fontWeight: "bold"
